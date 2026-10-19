@@ -1,0 +1,134 @@
+:root {
+    --gora-blue: #245681;
+    --gora-blue-dark: #0b3854;
+    --gora-green: #4b9f68;
+    --gora-text: #333333;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: var(--gora-text);
+    background-color: #f5f8fa;
+}
+
+body.admin-panel {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-navbar {
+    background: linear-gradient(110deg, var(--gora-blue-dark), var(--gora-blue));
+    box-shadow: 0 2px 12px rgba(11, 56, 84, .18);
+}
+
+.navbar-brand {
+    font-family: "Century Gothic", "Trebuchet MS", sans-serif;
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+
+.brand-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .85);
+    background-color: #ffffff;
+}
+
+.brand-copy {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1.05;
+    color: #ffffff;
+}
+
+.brand-copy small {
+    margin-top: 4px;
+    color: rgba(255, 255, 255, .72);
+    font-size: .62rem;
+    font-weight: 400;
+    letter-spacing: .02em;
+}
+
+.navbar-nav,
+.navbar-nav .nav-link,
+.navbar-nav .dropdown-item {
+    font-family: "Century Gothic", "Trebuchet MS", sans-serif;
+}
+
+.navbar-nav .nav-link {
+    font-size: .95rem;
+}
+
+.site-navbar .nav-link {
+    color: rgba(255, 255, 255, .76);
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+    color: #ffffff;
+}
+
+.admin-banner {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(115deg, #e7f2f5, #ffffff 62%, #e5f2e8);
+    border-bottom: 1px solid #d8e5e8;
+}
+
+.admin-banner::after {
+    position: absolute;
+    right: -28px;
+    bottom: -76px;
+    width: 220px;
+    height: 220px;
+    border: 18px solid rgba(75, 159, 104, .12);
+    border-radius: 50%;
+    content: "";
+}
+
+.admin-banner::before {
+    position: absolute;
+    top: -48px;
+    right: 70px;
+    width: 180px;
+    height: 180px;
+    background: url("../images/logo.jpg") center / contain no-repeat;
+    content: "";
+    opacity: .1;
+}
+
+.admin-banner h1 {
+    color: var(--gora-blue-dark);
+    font-family: "Century Gothic", "Trebuchet MS", sans-serif;
+    font-size: 1.45rem;
+    letter-spacing: .04em;
+}
+
+body.admin-panel main {
+    flex: 1;
+}
+
+.module-card {
+    height: 100%;
+    border: 1px solid #dee2e6;
+    border-radius: .7rem;
+    box-shadow: 0 4px 14px rgba(20, 82, 118, .06);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.module-card:hover {
+    box-shadow: 0 8px 22px rgba(20, 82, 118, .14);
+    transform: translateY(-3px);
+}
+
+.site-footer {
+    background-color: var(--gora-blue);
+    color: #ffffff;
+}

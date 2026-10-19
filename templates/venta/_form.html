@@ -1,0 +1,55 @@
+<?php
+    require_once __DIR__ . '/../../admin/models/cliente/cliente.class.php';
+    require_once __DIR__ . '/../../admin/models/empleado/empleado.class.php';
+    require_once __DIR__ . '/../../admin/models/material/material.class.php';
+    $clientes = (new cliente())->getall();
+    $empleados = (new empleado())->getall();
+    $materiales = (new material())->getall();
+?>
+<?php if (!empty($errores)): ?><div class="alert alert-danger"><ul class="mb-0"><?php foreach ($errores as $error): ?><li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li><?php endforeach; ?></ul></div><?php endif; ?>
+<form action="venta.php?accion=<?php echo $accion; isset($datos['id_venta'])? print '&id=' . $datos['id_venta']: print ''; ?>" method="post">
+    <div class="mb-3">
+        <label class="form-label">Cliente</label>
+        <select name="data[id_cliente]" class="form-select" required>
+            <option value="">Selecciona un cliente</option>
+            <?php foreach ($clientes as $cliente): ?>
+                <option value="<?php echo $cliente['id_cliente']; ?>" <?php echo isset($datos['id_cliente']) && $datos['id_cliente'] == $cliente['id_cliente'] ? 'selected' : ''; ?>><?php echo htmlspecialchars($cliente['nombre'], ENT_QUOTES, 'UTF-8'); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Empleado</label>
+        <select name="data[id_empleado]" class="form-select" required>
+            <option value="">Selecciona un empleado</option>
+            <?php foreach ($empleados as $empleado): ?>
+                <option value="<?php echo $empleado['id_empleado']; ?>" <?php echo isset($datos['id_empleado']) && $datos['id_empleado'] == $empleado['id_empleado'] ? 'selected' : ''; ?>><?php echo htmlspecialchars($empleado['nombre'], ENT_QUOTES, 'UTF-8'); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Material</label>
+        <select name="data[id_material]" class="form-select" required>
+            <option value="">Selecciona un material</option>
+            <?php foreach ($materiales as $material): ?>
+                <option value="<?php echo $material['id_material']; ?>" <?php echo isset($datos['id_material']) && $datos['id_material'] == $material['id_material'] ? 'selected' : ''; ?>><?php echo htmlspecialchars($material['material'], ENT_QUOTES, 'UTF-8'); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Fecha</label>
+        <input type="date" name="data[fecha]" value="<?php echo htmlspecialchars($datos['fecha'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" class="form-control" max="<?php echo date('Y-m-d'); ?>" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Cantidad</label>
+        <input type="number" name="data[cantidad]" value="<?php echo htmlspecialchars($datos['cantidad'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" class="form-control" min="0.01" max="99999999.99" step="0.01" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Unidad de medida</label>
+        <select name="data[unidad]" class="form-select" required>
+            <option value="">Selecciona una unidad</option>
+            <option value="kilogramos" <?php echo ($datos['unidad'] ?? '') === 'kilogramos' ? 'selected' : ''; ?>>Kilogramos</option>
+            <option value="toneladas" <?php echo ($datos['unidad'] ?? '') === 'toneladas' ? 'selected' : ''; ?>>Toneladas</option>
+        </select>
+    </div>
+    <input type="submit" class="btn btn-success" name="enviar" value="Guardar">
+</form>

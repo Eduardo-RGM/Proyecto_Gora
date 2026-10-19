@@ -1,0 +1,25 @@
+<?php if (!empty($errores)): ?>
+    <div class="alert alert-danger"><ul class="mb-0"><?php foreach ($errores as $error): ?><li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li><?php endforeach; ?></ul></div>
+<?php endif; ?>
+<form enctype="multipart/form-data" action="material.php?accion=<?php echo $accion; isset($datos['id_material'])? print '&id=' . $datos['id_material']: print ''; ?>" method="post">
+    <div class="mb-3">
+        <label class="form-label">Material</label>
+        <select name="data[material]" class="form-select" required>
+            <option value="">Selecciona un material</option>
+            <?php foreach (['papel', 'cartón', 'pet'] as $opcion): ?>
+                <option value="<?php echo $opcion; ?>" <?php echo isset($datos['material']) && strtolower($datos['material']) === $opcion ? 'selected' : ''; ?>><?php echo ucfirst($opcion); ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Foto</label>
+        <?php if (!empty($datos['foto'])): ?><img class="d-block rounded mb-2" src="../images/uploads/<?php echo htmlspecialchars($datos['foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto actual" width="120" height="120"><?php endif; ?>
+        <input type="file" name="data[foto]" class="form-control" accept="image/jpeg,image/png,image/gif,image/webp,image/bmp" <?php echo $accion === 'create' ? 'required' : ''; ?>>
+        <?php if ($accion === 'update'): ?><small class="text-secondary">Déjala vacía para conservar la foto actual.</small><?php endif; ?>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        <input type="text" name="data[descripcion]" value="<?php isset($datos['descripcion'])? print htmlspecialchars($datos['descripcion'], ENT_QUOTES, 'UTF-8'): print ''; ?>" class="form-control" maxlength="150" required>
+    </div>
+    <input type="submit" class="btn btn-success" name="enviar" value="Guardar">
+</form>

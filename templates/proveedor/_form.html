@@ -1,0 +1,28 @@
+<?php if (!empty($errores)): ?>
+    <div class="alert alert-danger"><ul class="mb-0"><?php foreach ($errores as $error): ?><li><?php echo htmlspecialchars($error, ENT_QUOTES, 'UTF-8'); ?></li><?php endforeach; ?></ul></div>
+<?php endif; ?>
+<form enctype="multipart/form-data" action="proveedor.php?accion=<?php echo $accion; isset($datos['id_proveedor'])? print '&id=' . $datos['id_proveedor']: print ''; ?>" method="post">
+    <div class="mb-3">
+        <label class="form-label">Razón social</label>
+        <input type="text" name="data[razon_social]" value="<?php echo htmlspecialchars($datos['razon_social'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" class="form-control" id="razon_social" maxlength="100" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">RFC</label>
+        <input type="text" name="data[rfc]" value="<?php echo htmlspecialchars($datos['rfc'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" class="form-control" id="rfc" minlength="12" maxlength="13" pattern="[A-Za-z]{3,4}[0-9]{6}[A-Za-z0-9]{3}" placeholder="XXAX000000XYZ" title="ingresa un rfc válido: 3 o 4 letras, 6 números y 3 letras o números." oninvalid="this.setCustomValidity('ingresa un rfc válido: 3 o 4 letras, 6 números y 3 letras o números.')" oninput="this.setCustomValidity('')" onblur="this.reportValidity()" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Teléfono</label>
+        <input type="tel" name="data[telefono]" value="<?php echo htmlspecialchars($datos['telefono'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" class="form-control" id="telefono" maxlength="20" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Correo</label>
+        <input type="email" name="data[correo]" value="<?php echo htmlspecialchars($datos['correo'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" class="form-control" id="correo" maxlength="150">
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Logo</label>
+        <?php if (!empty($datos['logo'])): ?><img class="d-block rounded-circle mb-2" src="../images/uploads/<?php echo htmlspecialchars($datos['logo'], ENT_QUOTES, 'UTF-8'); ?>" alt="Logo actual" width="100" height="100"><?php endif; ?>
+        <input type="file" name="data[logo]" class="form-control" accept="image/jpeg,image/png,image/gif,image/webp,image/bmp" <?php echo $accion === 'create' ? 'required' : ''; ?>>
+        <?php if ($accion === 'update'): ?><small class="text-secondary">Déjalo vacío para conservar el logo actual.</small><?php endif; ?>
+    </div>
+    <input type="submit" class="btn btn-success" name="enviar" value="Guardar">
+</form>

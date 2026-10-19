@@ -1,0 +1,38 @@
+<a href="empleado.php?accion=create" class="btn btn-success">Agregar</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Foto</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">RFC</th>
+			<th scope="col">Primer apellido</th>
+			<th scope="col">Segundo apellido</th>
+			<th scope="col">Puesto</th>
+			<th scope="col">Opciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($empleados as $empleado): ?>
+		<tr>
+			<th scope="row"><?php echo $empleado['id_empleado']; ?></th>
+			<td>
+				<?php if (!empty($empleado['foto'])): ?>
+					<img class="rounded-circle" src="../images/uploads/<?php echo htmlspecialchars($empleado['foto'], ENT_QUOTES, 'UTF-8'); ?>" alt="Foto del empleado" width="80" height="80">
+				<?php endif; ?>
+			</td>
+			<td><?php echo $empleado['nombre']; ?></td>
+			<td><?php echo $empleado['rfc']; ?></td>
+			<td><?php echo $empleado['pri_apellido']; ?></td>
+			<td><?php echo $empleado['seg_apellido']; ?></td>
+			<td><?php echo $empleado['puesto']; ?></td>
+			<td>
+				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+					<a href="empleado.php?accion=update&id=<?php echo $empleado['id_empleado']; ?>" class="btn btn-primary">editar</a>
+					<a href="empleado.php?accion=delete&id=<?php echo $empleado['id_empleado']; ?>" class="btn btn-danger">eliminar</a>
+				</div>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>

@@ -1,0 +1,30 @@
+<a href="cliente.php?accion=create" class="btn btn-success">Agregar</a>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">Teléfono</th>
+			<th scope="col">Dirección</th>
+			<th scope="col">Correo</th>
+			<th scope="col">Opciones</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($clientes as $cliente): ?>
+		<tr>
+			<th scope="row"><?php echo $cliente['id_cliente']; ?></th>
+			<td><?php echo $cliente['nombre']; ?></td>
+			<td><?php echo $cliente['telefono']; ?></td>
+			<td><?php echo $cliente['direccion']; ?></td>
+			<td><?php echo $cliente['correo']; ?></td>
+			<td>
+				<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+					<a href="cliente.php?accion=update&id=<?php echo $cliente['id_cliente']; ?>" class="btn btn-primary">editar</a>
+					<a href="cliente.php?accion=delete&id=<?php echo $cliente['id_cliente']; ?>" class="btn btn-danger">eliminar</a>
+				</div>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
