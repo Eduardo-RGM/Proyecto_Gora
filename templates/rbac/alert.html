@@ -1,0 +1,13 @@
+<?php if(isset($alerta['mensaje'])&& isset($alerta['tipo'])):?>
+    <div class="alert theme-<?php echo $alerta['tipo']; ?>" role="alert">
+        <p><?php echo $alerta['mensaje']; ?></p>
+        <button class="alert-close" type="button" aria-label="Cerrar aviso">&times;</button>
+    </div>
+    <script>
+        document.querySelectorAll('.alert-close').forEach(function (button) {
+            button.addEventListener('click', function () {
+                button.closest('.alert').classList.add('is-hidden');
+            });
+        });
+    </script>
+<?php endif; ?>

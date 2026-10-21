@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva contraseña | GORA</title>
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body class="login-page">
+    <main class="login-layout">
+        <section class="login-intro" aria-label="Presentación">
+            <div class="brand">
+                <span class="brand-mark" aria-hidden="true">C</span>
+                <span>GORA</span>
+            </div>
+            <div class="intro-copy">
+                <h1>Una cuenta segura empieza aquí.</h1>
+                <p>Elige una contraseña nueva para proteger tu espacio de trabajo.</p>
+            </div>
+        </section>
+
+        <section class="login-panel" aria-labelledby="new-password-title">
+            <h2 id="new-password-title">Nueva contraseña</h2>
+            <p>Escribe y confirma tu nueva contraseña.</p>
+
+            <form method="post" action="#">
+                <div class="field">
+                    <label for="nueva-contrasena">Nueva contraseña</label>
+                    <input
+                        type="password"
+                        id="nueva-contrasena"
+                        name="contrasena"
+                        placeholder="Ingresa tu nueva contraseña"
+                        autocomplete="new-password"
+                        required>
+                </div>
+
+                <div class="field">
+                    <label for="confirmar-contrasena">Confirmar contraseña</label>
+                    <input
+                        type="password"
+                        id="confirmar-contrasena"
+                        name="confirmar_contrasena"
+                        placeholder="Repite tu nueva contraseña"
+                        autocomplete="new-password"
+                        required>
+                </div>
+
+                <input class="submit-button" type="submit" name="guardar" value="Guardar contraseña">
+            </form>
+            <a class="forgot-password" href="login.php?accion=login">Volver al inicio de sesión</a>
+        </section>
+    </main>
+</body>
+</html>
