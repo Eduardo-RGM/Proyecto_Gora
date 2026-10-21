@@ -8,7 +8,6 @@
         require_once $configuracionLocal;
     }
 
-    //Variables de configuración de la base de datos
     defined('DB_driver') || define('DB_driver', 'mysql');
     defined('DB_HOST') || define('DB_HOST', 'mariadb');
     defined('DB_USER') || define('DB_USER', 'user');
