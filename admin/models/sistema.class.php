@@ -111,11 +111,6 @@
                 $_SESSION['valido'] = true;
                 $_SESSION['roles'] = $this->getRoles($correo);
                 $_SESSION['permisos'] = $this->getPermisos($correo);
-                $_SESSION['correo_login_enviado'] = $this->enviarCorreo(
-                    [$correo],
-                    'Inicio de sesión en GORA',
-                    '<p>Se inició sesión en tu cuenta de GORA.</p><p>Si no reconoces este acceso, cambia tu contraseña y avisa al administrador.</p>'
-                );
                 return true;
             }
 
@@ -176,6 +171,8 @@
                 $mail = new PHPMailer();
                 $mail->isSMTP();
                 $mail->SMTPDebug = SMTP::DEBUG_OFF;
+                $mail->CharSet = 'UTF-8';
+                $mail->Encoding = 'base64';
                 $mail->Host = SMTP_HOST;
                 $mail->Port = SMTP_PORT;
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
