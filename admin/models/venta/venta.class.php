@@ -31,6 +31,13 @@
                     ORDER BY v.id_venta DESC";
             return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         }
+        function getResumenPorMes() {
+            $sql = "SELECT DATE_FORMAT(fecha, '%Y-%m') AS mes, SUM(cantidad) AS cantidad
+                    FROM venta
+                    GROUP BY DATE_FORMAT(fecha, '%Y-%m')
+                    ORDER BY mes";
+            return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+        }
         function update($id, $data) {
             if (!is_numeric($id)) return 0;
             $errores = $this->validar($data);
