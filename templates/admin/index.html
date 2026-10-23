@@ -99,7 +99,52 @@
                     </div>
                 </article>
             </div>
+
+            <div class="col-md-6 col-xl-4">
+                <article class="module-card card">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="h5 card-title">Compras</h2>
+                        <p class="card-text text-secondary flex-grow-1">Registro de compras.</p>
+                        <a class="btn btn-primary align-self-start" href="compra.php">Administrar</a>
+                    </div>
+                </article>
+            </div>
         </div>
+        <section class="mt-5">
+            <h2 class="h4">Ventas y compras por mes</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card p-3">
+                        <h3 class="h5">Ventas por mes</h3>
+                        <div id="grafica-ventas" style="width: 100%; height: 360px;"></div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card p-3">
+                        <h3 class="h5">Compras por mes</h3>
+                        <div id="grafica-compras" style="width: 100%; height: 360px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5">
+            <h2 class="h4">Comparativas generales</h2>
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div class="card p-3">
+                        <h3 class="h5">Comparación mensual</h3>
+                        <canvas id="grafica-comparacion" height="150"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="card p-3">
+                        <h3 class="h5">Distribución de movimientos</h3>
+                        <canvas id="grafica-distribucion" height="210"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer py-3 mt-5">
@@ -111,5 +156,191 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ventas = <?php echo json_encode($ventasGrafica, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>;
+            const compras = <?php echo json_encode($comprasGrafica, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>;
+
+            google.charts.load('current', {'packages': ['bar']});
+            google.charts.setOnLoadCallback(drawVentas);
+            google.charts.setOnLoadCallback(drawCompras);
+
+            function drawVentas() {
+                const datosVentas = [['Mes', 'Cantidad']];
+                ventas.forEach(function (venta) {
+                    datosVentas.push([venta.mes, Number(venta.cantidad)]);
+                });
+                if (datosVentas.length === 1) {
+                    datosVentas.push(['Sin datos', 0]);
+                }
+                const data = google.visualization.arrayToDataTable(datosVentas);
+                const options = {
+                    width: '100%',
+                    legend: {position: 'none'},
+                    bars: 'horizontal',
+                    axes: {
+                        x: {
+                            0: {side: 'top', label: 'Cantidad'}
+                        }
+                    },
+                    bar: {groupWidth: '90%'}
+                };
+                const chart = new google.charts.Bar(document.getElementById('grafica-ventas'));
+                chart.draw(data, options);
+            }
+
+            function drawCompras() {
+                const datosCompras = [['Mes', 'Cantidad']];
+                compras.forEach(function (compra) {
+                    datosCompras.push([compra.mes, Number(compra.cantidad)]);
+                });
+                if (datosCompras.length === 1) {
+                    datosCompras.push(['Sin datos', 0]);
+                }
+                const data = google.visualization.arrayToDataTable(datosCompras);
+                const options = {
+                    width: '100%',
+                    legend: {position: 'none'},
+                    bars: 'horizontal',
+                    axes: {
+                        x: {
+                            0: {side: 'top', label: 'Cantidad'}
+                        }
+                    },
+                    bar: {groupWidth: '90%'}
+                };
+                const chart = new google.charts.Bar(document.getElementById('grafica-compras'));
+                chart.draw(data, options);
+            }
+
+            const meses = [];
+            ventas.forEach(function (venta) {
+                if (!meses.includes(venta.mes)) meses.push(venta.mes);
+            });
+            compras.forEach(function (compra) {
+                if (!meses.includes(compra.mes)) meses.push(compra.mes);
+            });
+            meses.sort();
+            if (meses.length === 0) meses.push('Sin datos');
+
+            const cantidadesVentas = meses.map(function (mes) {
+                const venta = ventas.find(function (registro) { return registro.mes === mes; });
+                return venta ? Number(venta.cantidad) : 0;
+            });
+            const cantidadesCompras = meses.map(function (mes) {
+                const compra = compras.find(function (registro) { return registro.mes === mes; });
+                return compra ? Number(compra.cantidad) : 0;
+            });
+
+            const comparacionCanvas = document.getElementById('grafica-comparacion');
+            const comparacionContext = comparacionCanvas.getContext('2d');
+            const ventasGradient = comparacionContext.createLinearGradient(0, 0, 0, 340);
+            ventasGradient.addColorStop(0, '#2a7e9c');
+            ventasGradient.addColorStop(1, '#123b59');
+            const comprasGradient = comparacionContext.createLinearGradient(0, 0, 0, 340);
+            comprasGradient.addColorStop(0, '#a5d76e');
+            comprasGradient.addColorStop(1, '#4d8f5c');
+
+            new Chart(comparacionCanvas, {
+                type: 'bar',
+                data: {
+                    labels: meses,
+                    datasets: [
+                        {
+                            label: 'Ventas',
+                            data: cantidadesVentas,
+                            backgroundColor: ventasGradient,
+                            borderColor: '#0c3d56',
+                            borderWidth: 1,
+                            borderRadius: 8,
+                            borderSkipped: false,
+                            barPercentage: 0.72
+                        },
+                        {
+                            label: 'Compras',
+                            data: cantidadesCompras,
+                            backgroundColor: comprasGradient,
+                            borderColor: '#3f7e4c',
+                            borderWidth: 1,
+                            borderRadius: 8,
+                            borderSkipped: false,
+                            barPercentage: 0.72
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    interaction: {mode: 'index', intersect: false},
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {usePointStyle: true, padding: 22}
+                        },
+                        tooltip: {
+                            displayColors: true,
+                            padding: 12,
+                            cornerRadius: 10
+                        }
+                    },
+                    scales: {
+                        x: {grid: {display: false}},
+                        y: {
+                            beginAtZero: true,
+                            border: {display: false},
+                            grid: {color: 'rgba(23, 37, 54, 0.08)'},
+                            ticks: {precision: 0}
+                        }
+                    }
+                }
+            });
+
+            const totalVentas = cantidadesVentas.reduce(function (total, cantidad) { return total + cantidad; }, 0);
+            const totalCompras = cantidadesCompras.reduce(function (total, cantidad) { return total + cantidad; }, 0);
+            const centroDona = {
+                id: 'centroDona',
+                afterDraw: function (chart) {
+                    const context = chart.ctx;
+                    const area = chart.chartArea;
+                    const centroX = (area.left + area.right) / 2;
+                    const centroY = (area.top + area.bottom) / 2;
+                    context.save();
+                    context.textAlign = 'center';
+                    context.fillStyle = '#172536';
+                    context.font = '700 24px Segoe UI';
+                    context.fillText(totalVentas + totalCompras, centroX, centroY + 7);
+                    context.fillStyle = '#738092';
+                    context.font = '12px Segoe UI';
+                    context.fillText('movimientos', centroX, centroY + 27);
+                    context.restore();
+                }
+            };
+
+            new Chart(document.getElementById('grafica-distribucion'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Ventas', 'Compras'],
+                    datasets: [{
+                        data: [totalVentas, totalCompras],
+                        backgroundColor: ['#176b87', '#79b85b'],
+                        borderColor: '#fffdf8',
+                        borderWidth: 5,
+                        hoverOffset: 12
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '68%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {usePointStyle: true, padding: 20}
+                        },
+                        tooltip: {padding: 12, cornerRadius: 10}
+                    }
+                },
+                plugins: [centroDona]
+            });
+        </script>
 </body>
 </html>
