@@ -1,6 +1,7 @@
 <?php
     include_once __DIR__ . '/models/material/material.class.php';
     $app = new material();
+    $app->checarPermiso('Administrar materiales');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     $tituloPagina = 'Materiales';

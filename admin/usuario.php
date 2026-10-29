@@ -1,7 +1,7 @@
 <?php
     include_once __DIR__ . '/models/usuario/usuario.class.php';
     $app = new usuario();
-    $app ->checarRol('Administrador');
+    $app ->checarPermiso('Administrar usuarios');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     include_once __DIR__ . '/../templates/admin/header.html';

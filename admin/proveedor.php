@@ -1,6 +1,7 @@
 <?php
     include_once __DIR__ . '/models/proveedor/proveedor.class.php';
     $app = new proveedor();
+    $app->checarPermiso('Administrar proveedores');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     $tituloPagina = 'Proveedores';

@@ -138,6 +138,34 @@
                 exit;
             }
 
+            function checarPermiso($permiso){
+                if (isset($_SESSION['roles']) && in_array('Administrador', $_SESSION['roles'], true)) {
+                    return true;
+                }
+
+                if (isset($_SESSION['permisos']) && in_array($permiso, $_SESSION['permisos'], true)) {
+                    return true;
+                }
+
+                $this->logout();
+                $alerta = [
+                    'tipo' => 'danger',
+                    'mensaje' => 'No tienes el permiso para acceder a esta página. Inicia sesión con un usuario que tenga el permiso adecuado.'
+                ];
+                require_once __DIR__ . '/../../templates/rbac/alert.html';
+                require_once __DIR__ . '/../../templates/login/login.html';
+                exit;
+            }
+
+            function checarSesion(){
+                if (isset($_SESSION['valido']) && $_SESSION['valido'] === true) {
+                    return true;
+                }
+
+                header('Location: login.php?accion=login');
+                exit;
+            }
+
             function getRoles($correo){
                 $stmt = $this->db->prepare(
                     "SELECT r.rol FROM rol r

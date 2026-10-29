@@ -1,6 +1,7 @@
 <?php
     include_once __DIR__ . '/models/venta/venta.class.php';
     $app = new venta();
+    $app->checarPermiso('Administrar ventas');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     $tituloPagina = 'Ventas';

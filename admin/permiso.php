@@ -1,7 +1,7 @@
 <?php
     include_once __DIR__ . '/models/permiso/permiso.class.php';
     $app = new permiso();
-    $app ->checarRol('Administrador');
+    $app ->checarPermiso('Administrar permisos');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     include_once __DIR__ . '/../templates/admin/header.html';

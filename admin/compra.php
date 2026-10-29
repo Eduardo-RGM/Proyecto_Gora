@@ -1,6 +1,7 @@
 <?php
     include_once __DIR__ . '/models/compra/compra.class.php';
     $app = new compra();
+    $app->checarPermiso('Administrar compras');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     $tituloPagina = 'Compras';

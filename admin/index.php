@@ -3,7 +3,7 @@
     include_once __DIR__ . '/models/venta/venta.class.php';
     include_once __DIR__ . '/models/compra/compra.class.php';
     $app = new sistema();
-    $app->checarRol('Administrador');
+    $app->checarSesion();
     $venta = new venta();
     $compra = new compra();
     $ventasGrafica = $venta->getResumenPorMes();

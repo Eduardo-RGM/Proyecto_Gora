@@ -23,15 +23,18 @@
         
         case 'logout':
             $app->logout();
-            $alerta['tipo'] = 'success';
-            $alerta['mensaje'] = 'Sesión cerrada correctamente';
-            require_once __DIR__ . '/../templates/rbac/alert.html';
-            require_once __DIR__ . '/../templates/login/login.html';
+            header('Location: login.php?accion=login&cerrada=1');
             exit;
-            break;
 
         case 'login':
             default:
+            if (isset($_GET['cerrada'])) {
+                $alerta = [
+                    'tipo' => 'success',
+                    'mensaje' => 'Sesión cerrada correctamente.'
+                ];
+                require_once __DIR__ . '/../templates/rbac/alert.html';
+            }
             require_once __DIR__ . '/../templates/login/login.html';
             break;
 
