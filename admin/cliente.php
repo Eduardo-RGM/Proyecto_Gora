@@ -1,6 +1,7 @@
 <?php
     include_once __DIR__ . '/models/cliente/cliente.class.php';
     $app = new cliente();
+    $app->checarPermiso('Administrar clientes');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     $tituloPagina = 'Clientes';

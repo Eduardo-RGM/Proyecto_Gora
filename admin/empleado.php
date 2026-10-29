@@ -1,6 +1,7 @@
 <?php
     include_once __DIR__ . '/models/empleado/empleado.class.php';
     $app = new empleado();
+    $app->checarPermiso('Administrar empleados');
     $accion = $_GET['accion'] ?? 'read';
     $id = $_GET['id'] ?? null;
     $tituloPagina = 'Empleados';

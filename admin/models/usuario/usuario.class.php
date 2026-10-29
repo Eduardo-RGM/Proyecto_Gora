@@ -163,4 +163,47 @@ class usuario extends sistema
         }
         return $afectados;
     }
+
+    function guardarToken($correo, $token) {
+        if (!filter_var($correo, FILTER_VALIDATE_EMAIL) || strlen($token) !== 64) {
+            return false;
+        }
+
+        $stmt = $this->db->prepare(
+            "UPDATE usuario SET token = :token WHERE LOWER(TRIM(correo)) = :correo"
+        );
+        $stmt->execute([
+            ':token' => $token,
+            ':correo' => strtolower(trim($correo))
+        ]);
+        return $stmt->rowCount() > 0;
+    }
+
+    function validarToken($token) {
+        if (strlen($token) !== 64) {
+            return false;
+        }
+
+        $stmt = $this->db->prepare(
+            "SELECT id_usuario FROM usuario WHERE token = :token"
+        );
+        $stmt->execute([':token' => $token]);
+        return (bool) $stmt->fetchColumn();
+    }
+
+    function actualizarContrasena($token, $contrasena) {
+        if (strlen($token) !== 64 || trim($contrasena) === '') {
+            return false;
+        }
+
+        $stmt = $this->db->prepare(
+            "UPDATE usuario SET contrasena = :contrasena, token = NULL
+             WHERE token = :token"
+        );
+        $stmt->execute([
+            ':contrasena' => md5($contrasena),
+            ':token' => $token
+        ]);
+        return $stmt->rowCount() > 0;
+    }
 }

@@ -110,6 +110,7 @@
                 </article>
             </div>
         </div>
+       
         <section class="mt-5">
             <h2 class="h4">Ventas y compras por mes</h2>
             <div class="row g-4">
@@ -162,6 +163,7 @@
             const ventas = <?php echo json_encode($ventasGrafica, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>;
             const compras = <?php echo json_encode($comprasGrafica, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP); ?>;
 
+            // Graficas de Google Charts.
             google.charts.load('current', {'packages': ['bar']});
             google.charts.setOnLoadCallback(drawVentas);
             google.charts.setOnLoadCallback(drawCompras);
@@ -233,6 +235,7 @@
                 return compra ? Number(compra.cantidad) : 0;
             });
 
+            // Graficas con Chart.js.
             const comparacionCanvas = document.getElementById('grafica-comparacion');
             const comparacionContext = comparacionCanvas.getContext('2d');
             const ventasGradient = comparacionContext.createLinearGradient(0, 0, 0, 340);

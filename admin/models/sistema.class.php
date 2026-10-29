@@ -111,11 +111,6 @@
                 $_SESSION['valido'] = true;
                 $_SESSION['roles'] = $this->getRoles($correo);
                 $_SESSION['permisos'] = $this->getPermisos($correo);
-                $_SESSION['correo_login_enviado'] = $this->enviarCorreo(
-                    [$correo],
-                    'Inicio de sesión en GORA',
-                    '<p>Se inició sesión en tu cuenta de GORA.</p><p>Si no reconoces este acceso, cambia tu contraseña y avisa al administrador.</p>'
-                );
                 return true;
             }
 
@@ -140,6 +135,34 @@
                 ];
                 require_once __DIR__ . '/../../templates/rbac/alert.html';
                 require_once __DIR__ . '/../../templates/login/login.html';
+                exit;
+            }
+
+            function checarPermiso($permiso){
+                if (isset($_SESSION['roles']) && in_array('Administrador', $_SESSION['roles'], true)) {
+                    return true;
+                }
+
+                if (isset($_SESSION['permisos']) && in_array($permiso, $_SESSION['permisos'], true)) {
+                    return true;
+                }
+
+                $this->logout();
+                $alerta = [
+                    'tipo' => 'danger',
+                    'mensaje' => 'No tienes el permiso para acceder a esta página. Inicia sesión con un usuario que tenga el permiso adecuado.'
+                ];
+                require_once __DIR__ . '/../../templates/rbac/alert.html';
+                require_once __DIR__ . '/../../templates/login/login.html';
+                exit;
+            }
+
+            function checarSesion(){
+                if (isset($_SESSION['valido']) && $_SESSION['valido'] === true) {
+                    return true;
+                }
+
+                header('Location: login.php?accion=login');
                 exit;
             }
 
@@ -176,6 +199,8 @@
                 $mail = new PHPMailer();
                 $mail->isSMTP();
                 $mail->SMTPDebug = SMTP::DEBUG_OFF;
+                $mail->CharSet = 'UTF-8';
+                $mail->Encoding = 'base64';
                 $mail->Host = SMTP_HOST;
                 $mail->Port = SMTP_PORT;
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;

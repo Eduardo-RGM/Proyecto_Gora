@@ -10,21 +10,21 @@
     <main class="login-layout">
         <section class="login-intro" aria-label="Presentación">
             <div class="brand">
-                <span class="brand-mark" aria-hidden="true">C</span>
+                <span class="brand-mark" aria-hidden="true">G</span>
                 <span>GORA</span>
             </div>
             <div class="intro-copy">
                 <h1>Recupera el acceso a tu espacio.</h1>
                 <p>Te ayudaremos a volver a tu cuenta de forma rápida y segura.</p>
             </div>
+            <p class="intro-note">Recibirás un enlace temporal en tu correo registrado.</p>
         </section>
 
         <section class="login-panel" aria-labelledby="recover-email-title">
             <h2 id="recover-email-title">Recuperar contraseña</h2>
             <p>Escribe el correo asociado a tu cuenta para continuar.</p>
 
-            <form method="get" action="login.php" id="recuperar-correo">
-                <input type="hidden" name="accion" value="restablecer">
+            <form method="post" action="login.php?accion=enviar_correo" id="recuperar-correo">
                 <div class="field">
                     <label for="correo-recuperacion">Correo electrónico</label>
                     <input
