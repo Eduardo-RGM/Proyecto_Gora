@@ -23,7 +23,7 @@
         
         case 'logout':
             $app->logout();
-            header('Location: login.php?accion=login&cerrada=1');
+            header('Location: ../public/Index.html');
             exit;
 
         case 'login':

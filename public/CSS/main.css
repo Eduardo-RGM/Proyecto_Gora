@@ -1,0 +1,94 @@
+.barraNavegacion {
+    background-color: #1f4e79;
+}
+
+.piePagina {
+    background-color: #1f4e79;
+}
+
+.navbar-brand .lema {
+    font-size: 13px;
+    font-style: italic;
+    color: #d9e6f0;
+}
+
+h1, h2 {
+    color: #1f4e79;
+}
+
+h2 {
+    border-bottom: 2px solid #3e8e41;
+    padding-bottom: 5px;
+}
+
+.tablaPrecios thead {
+    background-color: #1f4e79;
+    color: white;
+}
+
+.botonGora {
+    background-color: #1f4e79;
+    border-color: #1f4e79;
+    color: white;
+}
+
+.botonGora:hover {
+    background-color: #163a57;
+    border-color: #163a57;
+    color: white;
+}
+
+.tarjetaServicio {
+    background-color: #eef4f9;
+    border-color: #cfe0ea;
+}
+
+figure img {
+    max-width: 400px;
+    border: 1px solid #cccccc;
+}
+
+.imagenMaterial {
+    object-fit: cover;
+}
+
+.textoGora {
+    color: #1f4e79;
+}
+
+.heroGora {
+    background: linear-gradient(135deg, #1f4e79, #14324d);
+    color: white;
+}
+
+.heroGora h1 {
+    color: white;
+}
+
+.heroImagen {
+    height: 380px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center 65%;
+}
+
+.ctaGora {
+    background-color: #3e8e41;
+    color: white;
+}
+
+.ctaGora h2 {
+    color: white;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.list-group-item.active {
+    background-color: #1f4e79;
+    border-color: #1f4e79;
+}
+
+.dropdown-item.active {
+    background-color: #1f4e79;
+}
+

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GORA - Materiales</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark barraNavegacion sticky-top">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="images/logo.jpg" alt="Logo de GORA" height="48" class="me-2">
+                    <span>
+                        <span class="d-block fw-bold fs-5">GORA</span>
+                        <span class="d-block lema">Comercializadora de Fibras del Bajio</span>
+                    </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="materiales.html">Materiales</a></li>
+                        <li class="nav-item"><a class="nav-link" href="precios.html">Precios de Compra</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cotizacion.html">Cotizacion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nosotros</a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="historia.html">Historia</a></li>
+                                <li><a class="dropdown-item" href="mision.html">Mision</a></li>
+                                <li><a class="dropdown-item" href="vision.html">Vision</a></li>
+                                <li><a class="dropdown-item" href="valores.html">Valores</a></li>
+                                <li><a class="dropdown-item" href="servicios.html">Servicios</a></li>
+                                <li><a class="dropdown-item" href="registro.html">Registro</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="../admin/login.php">Iniciar sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="flex-fill">
+        <div class="container py-5">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-8">
+                    <span class="badge bg-success mb-3">Materiales que manejamos</span>
+                    <h1>Estos son los materiales que compramos y vendemos</h1>
+                    <p class="lead fs-6">Los recibimos de comerciantes y recolectores, y despues de clasificarlos y empacarlos los entregamos a empresas recicladoras.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 tarjetaServicio border-0 shadow-sm">
+                        <div class="ratio ratio-4x3 bg-light">
+                            <img src="images/carton.jpg" class="w-100 h-100 imagenMaterial" alt="Carton">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="h5 card-title">Carton</h2>
+                            <p class="card-text">Cajas y empaques de carton. Es de los materiales mas comunes que recibimos, y se puede reciclar varias veces antes de perder calidad.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 tarjetaServicio border-0 shadow-sm">
+                        <div class="ratio ratio-4x3 bg-light">
+                            <img src="images/papel.jpg" class="w-100 h-100 imagenMaterial" alt="Papel">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="h5 card-title">Papel</h2>
+                            <p class="card-text">Periodico, hojas y papel de oficina. Se clasifica aparte del carton porque las recicladoras lo procesan distinto.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 tarjetaServicio border-0 shadow-sm">
+                        <div class="ratio ratio-4x3 bg-light">
+                            <img src="images/pet.jpg" class="w-100 h-100 imagenMaterial" alt="Plastico PET">
+                        </div>
+                        <div class="card-body">
+                            <h2 class="h5 card-title">Plastico PET</h2>
+                            <p class="card-text">Botellas y envases de plastico. Es el material que mejor se paga, porque se usa para fabricar fibra textil y nuevos envases.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
+                <a class="btn botonGora" href="cotizacion.html">Solicitar cotizacion</a>
+                <a class="btn btn-outline-secondary" href="precios.html">Ver precios de compra</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="piePagina text-white text-center py-3">
+        <p class="mb-1">&copy; <span id="anioActual">2026</span> GORA - Comercializadora de Fibras del Bajio</p>
+        <address class="mb-0">contacto@ejemplo.com</address>
+    </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="js/script.js"></script>
+</body>
+</html>
