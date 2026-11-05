@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GORA - Inicio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark barraNavegacion sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.jpg" alt="Logo de GORA" height="48" class="me-2">
+                <span>
+                    <span class="d-block fw-bold fs-5">GORA</span>
+                    <span class="d-block lema">Comercializadora de Fibras del Bajio</span>
+                </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menuPrincipal">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="materiales.html">Materiales</a></li>
+                    <li class="nav-item"><a class="nav-link" href="precios.html">Precios de Compra</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cotizacion.html">Cotizacion</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nosotros</a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="historia.html">Historia</a></li>
+                            <li><a class="dropdown-item" href="mision.html">Mision</a></li>
+                            <li><a class="dropdown-item" href="vision.html">Vision</a></li>
+                            <li><a class="dropdown-item" href="valores.html">Valores</a></li>
+                            <li><a class="dropdown-item" href="servicios.html">Servicios</a></li>
+                            <li><a class="dropdown-item" href="registro.html">Registro</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="../admin/login.php">Iniciar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="flex-fill">
+    <div class="heroGora">
+        <div class="container py-5">
+            <div class="row align-items-center gy-4">
+                <div class="col-lg-7">
+                    <span class="badge bg-success mb-3">Reciclaje responsable en el Bajio</span>
+                    <h1 class="display-5 fw-bold">Compramos y vendemos material reciclable</h1>
+                    <p class="lead">Carton, papel y plastico. Un negocio familiar que conecta a recolectores locales con la industria del reciclaje.</p>
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        <a href="cotizacion.html" class="btn btn-light btn-lg">Solicitar cotizacion</a>
+                        <a href="precios.html" class="btn btn-outline-light btn-lg">Ver precios</a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <img src="images/Negocio.png" class="img-fluid rounded-4 shadow" alt="Almacen de GORA">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container py-5">
+        <div class="row text-center g-4 mb-5">
+            <div class="col-6 col-md-3">
+                <div class="display-6 fw-bold textoGora">11</div>
+                <p class="text-secondary mb-0">Personas en el equipo</p>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="display-6 fw-bold textoGora">3</div>
+                <p class="text-secondary mb-0">Materiales que manejamos</p>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="display-6 fw-bold textoGora">2</div>
+                <p class="text-secondary mb-0">Servicios principales</p>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="display-6 fw-bold textoGora">100%</div>
+                <p class="text-secondary mb-0">Material pesado frente al cliente</p>
+            </div>
+        </div>
+        <section id="nosotros" class="mb-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <h2>Quienes somos</h2>
+                    <p>GORA nacio hace varios anos como un pequeno acopio de carton y papel manejado por la familia. Con el tiempo fuimos creciendo, sumando mas material y mas gente al equipo, hasta convertirnos en un punto de referencia para los recolectores de la zona del Bajio que buscan un lugar serio donde vender su material.</p>
+                    <a href="historia.html" class="btn btn-outline-primary btn-sm">Leer nuestra historia</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="images/material_venta.jpg" class="img-fluid rounded-4" alt="Material listo para su venta" width="400" height="150">
+                </div>
+            </div>
+        </section>
+        <section id="servicios" class="mb-5">
+            <h2 class="mb-4">Lo que hacemos</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 tarjetaServicio border-0 shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-truck fs-1 textoGora"></i>
+                            <h3 class="h4 mt-3">Compra de material</h3>
+                            <p class="card-text">Recibimos carton, papel y plastico de comerciantes y recolectores locales, y pagamos el mismo dia segun el precio vigente.</p>
+                            <a href="servicios.html" class="btn btn-sm btn-outline-primary">Conocer mas</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 tarjetaServicio border-0 shadow-sm">
+                        <div class="card-body">
+                            <i class="bi bi-box-seam fs-1 textoGora"></i>
+                            <h3 class="h4 mt-3">Venta de fibra empacada</h3>
+                            <p class="card-text">Clasificamos y empacamos el material para venderlo a empresas recicladoras y fabricas de la region.</p>
+                            <a href="servicios.html" class="btn btn-sm btn-outline-primary">Conocer mas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="p-4 p-md-5 rounded-4 ctaGora text-center">
+            <h2>Tienes material para vender o necesitas comprar fibra?</h2>
+            <p class="fs-5">Solicita una cotizacion y te contestamos con un precio.</p>
+            <a href="cotizacion.html" class="btn btn-light btn-lg">Solicitar cotizacion</a>
+        </div>
+
+    </div>
+</main>
+
+<footer class="piePagina text-white text-center py-3">
+    <p class="mb-1">&copy; <span id="anioActual">2026</span> GORA - Comercializadora de Fibras del Bajio</p>
+    <address class="mb-0">comercializadoragora@gmail.com</address>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
