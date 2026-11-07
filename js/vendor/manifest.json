@@ -1,0 +1,32 @@
+{
+    "filepond": {
+        "version": "4.32.7",
+        "license": "MIT",
+        "source": "https://github.com/pqina/filepond"
+    },
+    "qrcodejs": {
+        "version": "1.0.0",
+        "license": "MIT",
+        "source": "https://github.com/davidshimjs/qrcodejs"
+    },
+    "sheetjs": {
+        "version": "0.18.5",
+        "license": "Apache-2.0",
+        "source": "https://github.com/SheetJS/sheetjs"
+    },
+    "fullcalendar": {
+        "version": "6.1.15",
+        "license": "MIT",
+        "source": "https://github.com/fullcalendar/fullcalendar"
+    },
+    "choices": {
+        "version": "11.1.0",
+        "license": "MIT",
+        "source": "https://github.com/Choices-js/Choices"
+    },
+    "chartjs": {
+        "version": "4.4.7",
+        "license": "MIT",
+        "source": "https://github.com/chartjs/Chart.js"
+    }
+}

@@ -2,17 +2,40 @@
 
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
+    use Monolog\Formatter\JsonFormatter;
+    use Monolog\Handler\StreamHandler;
+    use Monolog\Logger;
 
     require_once __DIR__.'/config.php';
     class sistema{
         var $db;
+        var $logger;
         function __construct(){
+                require_once __DIR__ . '/../../../vendor/autoload.php';
                 $this->db = new PDO(
                     'mysql:host='. DB_HOST .';dbname='. DB_NAME . ';charset=utf8mb4',
                     DB_USER,
                     DB_PASS,
                     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
                 );
+            }
+
+            function registrarBitacora($evento, $contexto = []){
+                $directorio = __DIR__ . '/../../storage/logs';
+                if (!is_dir($directorio) && !mkdir($directorio, 0755, true)) {
+                    error_log('No se pudo crear el directorio de bitácora de GORA.');
+                    return;
+                }
+                if (!$this->logger) {
+                    $handler = new StreamHandler($directorio . '/gora.log', Logger::INFO);
+                    $handler->setFormatter(new JsonFormatter());
+                    $this->logger = new Logger('gora');
+                    $this->logger->pushHandler($handler);
+                }
+                $contexto['usuario'] = $_SESSION['correo'] ?? 'sesión no identificada';
+                $contexto['id_usuario'] = $_SESSION['id_usuario'] ?? null;
+                $contexto['ip'] = $_SERVER['REMOTE_ADDR'] ?? 'desconocida';
+                $this->logger->info($evento, $contexto);
             }
 
             function cargarArchivo($nombre, $ruta){

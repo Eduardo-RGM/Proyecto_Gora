@@ -1,1 +1,6 @@
 admin/models/config.local.php
+images/uploads/*
+!images/uploads/.gitkeep
+
+storage/logs/*
+!storage/logs/.gitkeep

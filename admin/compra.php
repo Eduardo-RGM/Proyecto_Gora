@@ -16,6 +16,7 @@
                     $datos = $_POST['data'];
                     include_once __DIR__ . '/../templates/compra/_form.html';
                 } else {
+                    $app->registrarBitacora('COMPRA_CREADA', ['id_compra' => $datos['id_compra']]);
                     $compras = $app->getall();
                     include_once __DIR__ . '/../templates/compra/index.html';
                 }
@@ -31,6 +32,7 @@
                     $datos = array_merge($_POST['data'], ['id_compra' => $id]);
                     include_once __DIR__ . '/../templates/compra/_form.html';
                 } else {
+                    $app->registrarBitacora('COMPRA_ACTUALIZADA', ['id_compra' => $id]);
                     $compras = $app->getall();
                     include_once __DIR__ . '/../templates/compra/index.html';
                 }
@@ -40,7 +42,9 @@
             }
             break;
         case 'delete':
-            $app->delete($id);
+            if ($app->delete($id)) {
+                $app->registrarBitacora('COMPRA_ELIMINADA', ['id_compra' => $id]);
+            }
             $compras = $app->getall();
             include_once __DIR__ . '/../templates/compra/index.html';
             break;
