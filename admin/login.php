@@ -10,6 +10,7 @@
                 $correo = trim($_POST['correo'] ?? '');
                 $contrasena = $_POST['contrasena'] ?? '';
                 if ($app->login($correo, $contrasena)) {
+                    $app->registrarBitacora('INICIO_SESION');
                     header('Location: index.php');
                     exit;
                 }
@@ -22,6 +23,9 @@
             break;
         
         case 'logout':
+            if (isset($_SESSION['valido']) && $_SESSION['valido'] === true) {
+                $app->registrarBitacora('CIERRE_SESION');
+            }
             $app->logout();
             header('Location: ../public/Index.html');
             exit;
