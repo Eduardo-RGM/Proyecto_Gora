@@ -92,3 +92,44 @@ figure img {
     background-color: #1f4e79;
 }
 
+.fotoEmpleado {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #cfe0ea;
+}
+
+.logoProveedor {
+    display: block;
+    max-width: 100%;
+    max-height: 70px;
+    margin: 0 auto;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #ffffff, #e8f4ff);
+    border: 2px solid #6aa9d8;
+    border-radius: 12px;
+    object-fit: contain;
+    filter: none !important;
+    opacity: 1 !important;
+    box-shadow: 0 4px 12px rgba(31, 78, 121, 0.18);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.logoProveedor:hover {
+    border-color: #3e8e41;
+    box-shadow: 0 8px 18px rgba(62, 142, 65, 0.25);
+    transform: translateY(-3px);
+}
+
+#listaProveedores > div {
+    padding: 14px;
+    background: linear-gradient(180deg, #f8fcff, #eaf6ed);
+    border: 1px solid #cfe0ea;
+    border-radius: 16px;
+}
+
+#listaProveedores p {
+    color: #1f4e79 !important;
+    font-weight: 600;
+}

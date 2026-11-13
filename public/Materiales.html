@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body class="d-flex flex-column min-vh-100">
 
     <header>
@@ -20,18 +22,21 @@
                         <span class="d-block lema">Comercializadora de Fibras del Bajio</span>
                     </span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+                    aria-controls="menuPrincipal" aria-expanded="false" aria-label="Abrir menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="menuPrincipal">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="materiales.html">Materiales</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="materiales.html">Materiales</a></li>
                         <li class="nav-item"><a class="nav-link" href="precios.html">Precios de Compra</a></li>
                         <li class="nav-item"><a class="nav-link" href="cotizacion.html">Cotizacion</a></li>
                         <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Nosotros</a>
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">Nosotros</a>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="historia.html">Historia</a></li>
                                 <li><a class="dropdown-item" href="mision.html">Mision</a></li>
@@ -54,11 +59,12 @@
                 <div class="col-lg-8">
                     <span class="badge bg-success mb-3">Materiales que manejamos</span>
                     <h1>Estos son los materiales que compramos y vendemos</h1>
-                    <p class="lead fs-6">Los recibimos de comerciantes y recolectores, y despues de clasificarlos y empacarlos los entregamos a empresas recicladoras.</p>
+                    <p class="lead fs-6">Los recibimos de comerciantes y recolectores, y despues de clasificarlos y
+                        empacarlos los entregamos a empresas recicladoras.</p>
                 </div>
             </div>
-            <div class="row g-4">
-                <div class="col-md-4">
+            <div class="row g-4" id="listaMateriales">
+                <!--<div class="col-md-4">
                     <div class="card h-100 tarjetaServicio border-0 shadow-sm">
                         <div class="ratio ratio-4x3 bg-light">
                             <img src="images/carton.jpg" class="w-100 h-100 imagenMaterial" alt="Carton">
@@ -91,6 +97,8 @@
                         </div>
                     </div>
                 </div>
+            -->
+                    <p class="text-center text-secondary">Cargando materiales...</p>
             </div>
             <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
                 <a class="btn botonGora" href="cotizacion.html">Solicitar cotizacion</a>
@@ -101,10 +109,11 @@
 
     <footer class="piePagina text-white text-center py-3">
         <p class="mb-1">&copy; <span id="anioActual">2026</span> GORA - Comercializadora de Fibras del Bajio</p>
-        <address class="mb-0">contacto@ejemplo.com</address>
+        <address class="mb-0">comercializadoragora@gmail.com</address>
     </footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="JavaScript/Script.js"></script>
 </body>
 </html>
