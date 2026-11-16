@@ -122,14 +122,144 @@ figure img {
     transform: translateY(-3px);
 }
 
-#listaProveedores > div {
-    padding: 14px;
-    background: linear-gradient(180deg, #f8fcff, #eaf6ed);
+.carruselPublico {
+    padding: 0 56px;
+}
+
+.carruselPublico .carousel-item {
+    min-height: 170px;
+    padding: 14px 0 30px;
+}
+
+.carruselPublico .carousel-control-prev,
+.carruselPublico .carousel-control-next {
+    width: 42px;
+    height: 42px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #1f4e79;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+.carruselPublico .carousel-control-prev {
+    left: 0;
+}
+
+.carruselPublico .carousel-control-next {
+    right: 0;
+}
+
+.carruselPublico .carousel-control-prev:hover,
+.carruselPublico .carousel-control-next:hover {
+    background-color: #3e8e41;
+}
+
+.tarjetaProveedor {
+    padding: 18px 12px;
+    background: linear-gradient(180deg, #ffffff, #eef8f1);
     border: 1px solid #cfe0ea;
-    border-radius: 16px;
+    border-radius: 14px;
+}
+
+#carruselProveedores .logoProveedor {
+    width: 100%;
+    height: 96px;
+    max-height: 96px;
+    padding: 8px 14px;
+}
+
+.carruselPublico .tarjetaServicio {
+    overflow: hidden;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.carruselPublico .imagenMaterial {
+    height: 220px;
+    object-fit: contain;
+}
+
+#listaMaterialesCarousel .ratio {
+    height: 220px;
+    padding-top: 0;
+}
+
+@media (max-width: 576px) {
+    .carruselPublico {
+        padding: 0 42px;
+    }
 }
 
 #listaProveedores p {
     color: #1f4e79 !important;
     font-weight: 600;
 }
+body {
+    background-color: #f7fafc;
+    color: #23384d;
+}
+
+.navbar-brand img {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.navbar .nav-link {
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #ffffff;
+    border-bottom-color: #70b77e;
+}
+
+.heroGora {
+    position: relative;
+    overflow: hidden;
+}
+
+.heroGora::after {
+    position: absolute;
+    right: -80px;
+    bottom: -100px;
+    width: 280px;
+    height: 280px;
+    border: 35px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    content: "";
+}
+
+.heroGora .container {
+    position: relative;
+    z-index: 1;
+}
+
+section h2 {
+    letter-spacing: 0.2px;
+}
+
+.tarjetaServicio {
+    border: 1px solid #dce8f0 !important;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjetaServicio:hover {
+    box-shadow: 0 12px 28px rgba(31, 78, 121, 0.14) !important;
+    transform: translateY(-4px);
+}
+
+.form-control,
+.form-select {
+    border-color: #c9dbe7;
+    padding: 0.7rem 0.85rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: #3e8e41;
+    box-shadow: 0 0 0 0.2rem rgba(62, 142, 65, 0.15);
+}
+
